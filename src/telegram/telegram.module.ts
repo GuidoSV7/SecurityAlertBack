@@ -4,13 +4,11 @@ import { TelegramUpdate } from './telegram.update';
 import { TelegramService } from './telegram.service';
 import { NotificationfcmModule } from 'src/notificationfcm/notificationfcm.module';
 
-
-//7561623751:AAHz0-qjK8bj1STzBPM1vw_TVvY_eiJ4aF8
 @Module({
   imports: [
     TelegrafModule.forRootAsync({
       useFactory: () => ({
-        token: '',
+        token: '7561623751:AAHz0-qjK8bj1STzBPM1vw_TVvY_eiJ4aF8',
         launchOptions: {
           dropPendingUpdates: true,
           polling: {
