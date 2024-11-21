@@ -9,6 +9,8 @@ async function bootstrap() {
     rawBody: true
   });
 
+  app.enableCors();
+
     
   // Manejo de señales de terminación
   process.on('SIGINT', async () => {
