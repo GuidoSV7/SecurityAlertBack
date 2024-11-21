@@ -8,6 +8,6 @@ import { ZonasVerdesTestController } from './zonas-verdes.test.controller';
   imports: [TypeOrmModule.forFeature([ZonaVerde])],
   providers: [ZonasVerdesService],
   controllers: [ZonasVerdesTestController], 
-  exports: [ZonasVerdesService], // Exportamos el servicio para que pueda ser usado en otros módulos
+  exports: [ZonasVerdesService], 
 })
 export class ZonasVerdesModule {}

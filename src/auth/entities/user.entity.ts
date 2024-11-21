@@ -31,6 +31,9 @@ export class User {
     })
     rol: string;
 
+    @Column('text' )
+    tockenFCM: string;
+
 
 
     @BeforeInsert()

@@ -17,6 +17,7 @@ import { TelegramModule } from './telegram/telegram.module';
 import { ZonasVerdesModule } from './zonas-verdes/zonas-verdes.module';
 import { FiresModule } from './firms/fires.module';
 import { WeatherModule } from './weather/weather.module';
+import { GptModule } from './gpt/gpt.module';
 
 
 
@@ -67,7 +68,9 @@ import { WeatherModule } from './weather/weather.module';
     FiresModule,
 
     
-    WeatherModule
+    WeatherModule,
+
+    GptModule
 
 
 

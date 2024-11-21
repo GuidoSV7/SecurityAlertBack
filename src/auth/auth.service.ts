@@ -29,7 +29,7 @@ export class AuthService {
     
     try {
 
-      const { password, ...userData } = createUserDto;
+      const { password,tokenFCM, ...userData } = createUserDto;
       
       const user = this.userRepository.create({
         ...userData,
