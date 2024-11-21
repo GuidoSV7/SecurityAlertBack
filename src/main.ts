@@ -8,6 +8,20 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule,{
     rawBody: true
   });
+
+    
+  // Manejo de señales de terminación
+  process.on('SIGINT', async () => {
+    await app.close();
+    process.exit(0);
+  });
+  
+  process.on('SIGTERM', async () => {
+    await app.close();
+    process.exit(0);
+  });
+
+  
   const logger = new Logger('Bootstrap');
 
   app.setGlobalPrefix('api');

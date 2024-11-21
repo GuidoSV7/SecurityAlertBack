@@ -18,6 +18,7 @@ import { ZonasVerdesModule } from './zonas-verdes/zonas-verdes.module';
 import { FiresModule } from './firms/fires.module';
 import { WeatherModule } from './weather/weather.module';
 import { GptModule } from './gpt/gpt.module';
+import { ReportsModule } from './reports/reports.module';
 
 
 
@@ -70,7 +71,9 @@ import { GptModule } from './gpt/gpt.module';
     
     WeatherModule,
 
-    GptModule
+    GptModule,
+
+    ReportsModule
 
 
 

@@ -13,8 +13,7 @@ export class GptService {
       const prompt = this.generatePrompt(weatherData, firesData, zonasVerdesData);
       const analysis = await ReportPDFUseCase(this.openai, { prompt });
       
-      // Aquí deberías convertir el análisis a PDF
-      // Por ahora, solo devuelve el análisis
+
       return analysis;
     } catch (error) {
       console.error('Error en ReportPDFUseCase:', error);

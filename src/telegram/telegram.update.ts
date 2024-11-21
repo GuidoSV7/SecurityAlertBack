@@ -14,6 +14,7 @@ interface ChatInfo {
 interface MessageData {
   type: string;
   text: string;
+  photoUrl?: string;  // Campo opcional para URLs de fotos
   from: {
     username?: string;
     firstName: string;
@@ -51,10 +52,22 @@ export class TelegramUpdate {
   private async handleHelpRequest(ctx: Context, messageType: string, text?: string) {
     const groupInfo = this.getGroupInfo(ctx);
     const message = ctx.message as Message;
+    let photoUrl = '';
+
+    // Si es una foto, obtener la URL
+    if (messageType === 'foto') {
+      const photoMessage = message as Message.PhotoMessage;
+      const photos = photoMessage.photo;
+      const photo = photos[photos.length - 1];
+      const fileId = photo.file_id;
+      const file = await ctx.telegram.getFile(fileId);
+      photoUrl = `https://api.telegram.org/file/bot${process.env.TELEGRAM_TOKEN}/${file.file_path}`;
+    }
 
     const messageData: MessageData = {
       type: messageType,
       text: text || 'Archivo multimedia',
+      photoUrl: photoUrl, // Agregar la URL de la foto
       from: {
         username: message.from?.username,
         firstName: message.from?.first_name || 'Usuario',
@@ -100,6 +113,34 @@ export class TelegramUpdate {
     try {
       const message = ctx.message as Message.PhotoMessage;
       if (message?.caption?.toLowerCase().includes('#ayuda')) {
+        // Obtener el array de fotos (diferentes resoluciones)
+        const photos = message.photo;
+        // Obtener la foto con mayor resolución (último elemento del array)
+        const photo = photos[photos.length - 1];
+        
+        // Obtener el file_id de la foto
+        const fileId = photo.file_id;
+        
+        // Obtener el link de la foto
+        const file = await ctx.telegram.getFile(fileId);
+        const photoUrl = `https://api.telegram.org/file/bot${process.env.TELEGRAM_TOKEN}/${file.file_path}`;
+  
+        // Modificar messageData para incluir la URL de la foto
+        const messageData = {
+          type: 'foto',
+          text: message.caption || 'Foto sin descripción',
+          photoUrl: photoUrl,
+          from: {
+            username: message.from?.username,
+            firstName: message.from?.first_name || 'Usuario',
+            lastName: message.from?.last_name,
+          },
+          date: new Date(message.date * 1000).toLocaleString(),
+          chat: this.getGroupInfo(ctx)
+        };
+  
+        this.logger.log(`📸 URL de la foto: ${photoUrl}`);
+        
         await this.handleHelpRequest(ctx, 'foto', message.caption);
       }
     } catch (error) {
