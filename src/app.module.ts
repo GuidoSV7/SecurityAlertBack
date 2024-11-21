@@ -15,6 +15,7 @@ import { ComplaintsModule } from './complaints/complaints.module';
 import { NotificationfcmModule } from './notificationfcm/notificationfcm.module';
 import { TelegramModule } from './telegram/telegram.module';
 import { ZonasVerdesModule } from './zonas-verdes/zonas-verdes.module';
+import { FiresModule } from './firms/fires.module';
 
 
 
@@ -60,7 +61,9 @@ import { ZonasVerdesModule } from './zonas-verdes/zonas-verdes.module';
 
     TelegramModule,
     
-    ZonasVerdesModule
+    ZonasVerdesModule,
+    
+    FiresModule
 
 
 
