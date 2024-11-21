@@ -16,6 +16,7 @@ import { NotificationfcmModule } from './notificationfcm/notificationfcm.module'
 import { TelegramModule } from './telegram/telegram.module';
 import { ZonasVerdesModule } from './zonas-verdes/zonas-verdes.module';
 import { FiresModule } from './firms/fires.module';
+import { WeatherModule } from './weather/weather.module';
 
 
 
@@ -63,8 +64,10 @@ import { FiresModule } from './firms/fires.module';
     
     ZonasVerdesModule,
     
-    FiresModule
+    FiresModule,
 
+    
+    WeatherModule
 
 
 
