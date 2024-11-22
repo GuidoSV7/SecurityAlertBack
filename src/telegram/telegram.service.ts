@@ -24,10 +24,10 @@ export class TelegramService {
       tokens,
       title: message.text || 'Nueva notificación',
       body: message.caption || message.text || 'Tienes un nuevo mensaje',
-      icon: message.photoUrl 
+      ...(message.photoUrl && { icon: message.photoUrl })
     });
-    console.log(message);
-    console.log("aaaa",  message.photoUrl);
+    
+
     return message;
 }
 
