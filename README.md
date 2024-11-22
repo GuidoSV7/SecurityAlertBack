@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" />
 
-  # Sistema de Alerta de Seguridad
+  # Sistema de Alerta de Seguridad Ciudadana
   
   [![NestJS][nestjs-shield]][nestjs-url]
   [![Docker][docker-shield]][docker-url]
