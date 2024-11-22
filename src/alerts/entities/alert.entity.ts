@@ -2,10 +2,11 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 
 // Enums
 export enum AlertLevel {
-  VERDE = 'VERDE',
-  AMARILLA = 'AMARILLA',
-  NARANJA = 'NARANJA',
-  ROJA = 'ROJA'
+  VERDE = 'VERDE (monitoreo)',
+  AMARILLA = 'AMARILLA (precaución)',
+  NARANJA = 'NARANJA (peligro)',
+  ROJA = 'ROJA (emergencia)',
+
 }
 
 export enum EventType {
