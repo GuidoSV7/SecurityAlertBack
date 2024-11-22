@@ -26,7 +26,7 @@ export class TelegramService {
       body: message.caption || message.text || 'Tienes un nuevo mensaje',
       ...(message.photoUrl && { icon: message.photoUrl })
     });
-    
+    console.log(message.photoUrl)
 
     return message;
 }
