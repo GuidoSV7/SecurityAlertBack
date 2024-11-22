@@ -43,11 +43,11 @@ class EmergencyContactDto {
 
 export class CreateAlertDto {
   @ApiProperty()
-
+  @IsString()
   nivelAlerta: string;
 
   @ApiProperty()
-
+  @IsString()
   tipoEvento: string;
 
   @ApiProperty({ example: 'Posible inundación en zona norte' })
