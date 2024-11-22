@@ -1,6 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-
 // Embedded classes
 class Validity {
   @Column({ type: 'timestamp' })
@@ -37,10 +36,12 @@ export class Alert {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('text')
+  @Column({ 
+    default: 'VERDE'
+  })
   nivelAlerta: string;
 
-  @Column('text')
+  @Column()
   tipoEvento: string;
 
   @Column('text')
@@ -63,5 +64,4 @@ export class Alert {
 
   @Column('json')
   contactosEmergencia: EmergencyContact[];
-
 }
