@@ -27,7 +27,7 @@ export class TelegramService {
       icon: message.photoUrl 
     });
     console.log(message);
-
+    console.log("aaaa",  message.photoUrl);
     return message;
 }
 
