@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsString, IsArray, IsDateString, IsNumber, ValidateNested, ArrayMinSize } from 'class-validator';
 import { Type } from 'class-transformer';
-import { AlertLevel, EventType } from '../entities/alert.entity';
+
 
 class ValidityDto {
   @ApiProperty({ example: '2024-03-21T10:00:00Z' })
@@ -42,13 +42,13 @@ class EmergencyContactDto {
 }
 
 export class CreateAlertDto {
-  @ApiProperty({ enum: AlertLevel, example: AlertLevel.VERDE })
-  @IsEnum(AlertLevel)
-  nivelAlerta: AlertLevel;
+  @ApiProperty()
 
-  @ApiProperty({ enum: EventType, example: EventType.INUNDACION })
-  @IsEnum(EventType)
-  tipoEvento: EventType;
+  nivelAlerta: string;
+
+  @ApiProperty()
+
+  tipoEvento: string;
 
   @ApiProperty({ example: 'Posible inundación en zona norte' })
   @IsString()
