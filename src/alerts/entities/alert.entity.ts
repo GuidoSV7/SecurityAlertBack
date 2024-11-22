@@ -2,32 +2,32 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 
 // Embedded classes
 class Validity {
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', nullable: true })
   fechaInicio: Date;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', nullable: true })
   fechaFin: Date;
 }
 
 class Coordinates {
-  @Column({ type: 'double precision' })
+  @Column({ type: 'double precision', nullable: true })
   latitude: number;
 
-  @Column({ type: 'double precision' })
+  @Column({ type: 'double precision', nullable: true })
   longitude: number;
 
-  @Column({ type: 'double precision' })
+  @Column({ type: 'double precision', nullable: true })
   radio: number;
 }
 
 class EmergencyContact {
-  @Column()
+  @Column({ nullable: true })
   institucion: string;
 
-  @Column()
+  @Column({ nullable: true })
   telefono: string;
 
-  @Column()
+  @Column({ nullable: true })
   direccion: string;
 }
 
@@ -37,31 +37,32 @@ export class Alert {
   id: string;
 
   @Column({ 
-    default: 'VERDE'
+    default: 'VERDE',
+    nullable: true
   })
   nivelAlerta: string;
 
-  @Column()
+  @Column({ nullable: true })
   tipoEvento: string;
 
-  @Column('text')
+  @Column('text', { nullable: true })
   descripcion: string;
 
-  @Column('simple-array')
+  @Column('simple-array', { nullable: true })
   zonasAfectadas: string[];
 
   @Column(() => Validity)
   vigencia: Validity;
 
-  @Column('simple-array')
+  @Column('simple-array', { nullable: true })
   recomendaciones: string[];
 
-  @Column()
+  @Column({ nullable: true })
   institucionEmisora: string;
 
   @Column(() => Coordinates)
   coordenadas: Coordinates;
 
-  @Column('json')
+  @Column('json', { nullable: true })
   contactosEmergencia: EmergencyContact[];
 }
