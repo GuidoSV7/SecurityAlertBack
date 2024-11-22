@@ -1,25 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-// Enums
-export enum AlertLevel {
-  VERDE = 'VERDE (monitoreo)',
-  AMARILLA = 'AMARILLA (precaución)',
-  NARANJA = 'NARANJA (peligro)',
-  ROJA = 'ROJA (emergencia)',
-
-}
-
-export enum EventType {
-  INUNDACION = 'INUNDACION',
-  VIENTOS_FUERTES = 'VIENTOS_FUERTES',
-  LLUVIA_INTENSA = 'LLUVIA_INTENSA',
-  DESLIZAMIENTO = 'DESLIZAMIENTO',
-  INCENDIO_FORESTAL = 'INCENDIO_FORESTAL',
-  SEQUIA = 'SEQUIA',
-  TORMENTA_ELECTRICA = 'TORMENTA_ELECTRICA',
-  GRANIZADA = 'GRANIZADA',
-  ONDA_CALOR = 'ONDA_CALOR'
-}
 
 // Embedded classes
 class Validity {
@@ -57,18 +37,11 @@ export class Alert {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({
-    type: 'enum',
-    enum: AlertLevel,
-    default: AlertLevel.VERDE
-  })
-  nivelAlerta: AlertLevel;
+  @Column('text')
+  nivelAlerta: string;
 
-  @Column({
-    type: 'enum',
-    enum: EventType
-  })
-  tipoEvento: EventType;
+  @Column('text')
+  tipoEvento: string;
 
   @Column('text')
   descripcion: string;
